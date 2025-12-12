@@ -1,0 +1,72 @@
+[
+  {
+    "id": "SENT_0001",
+    "category": "问候",
+    "subcategory": "基本问候",
+    "french": "Bonjour, comment allez-vous ?",
+    "ipa": "/bɔ̃.ʒuʁ, kɔ.mɑ̃ a.le vu/",
+    "chinese": "您好，您最近好吗？",
+    "audio": "TTS",
+    "audio_mp3": null,
+    "level": "A1",
+    "situation": "正式场合问候",
+    "alternative": ["Salut, ça va ?"],
+    "notes": "正式场合使用"
+  },
+  {
+    "id": "SENT_0002",
+    "category": "问候",
+    "subcategory": "告别",
+    "french": "Au revoir et à bientôt.",
+    "ipa": "/o ʁə.vwaʁ e a bjɛ̃.to/",
+    "chinese": "再见，回头见。",
+    "audio": "TTS",
+    "audio_mp3": null,
+    "level": "A1",
+    "situation": "日常告别",
+    "alternative": [],
+    "notes": ""
+  },
+  {
+    "id": "SENT_0003",
+    "category": "餐厅",
+    "subcategory": "点餐",
+    "french": "L'addition, s'il vous plaît.",
+    "ipa": "/la.di.sjɔ̃ sil vu plɛ/",
+    "chinese": "请结账。",
+    "audio": "TTS",
+    "audio_mp3": null,
+    "level": "A1",
+    "situation": "餐厅用餐结束",
+    "alternative": [],
+    "notes": "向服务员示意时使用"
+  },
+  {
+    "id": "SENT_0004",
+    "category": "求助",
+    "subcategory": "语言困难",
+    "french": "Parlez-vous anglais ?",
+    "ipa": "/paʁ.le vu ɑ̃.ɡlɛ/",
+    "chinese": "您会说英语吗？",
+    "audio": "TTS",
+    "audio_mp3": null,
+    "level": "A1",
+    "situation": "遇到沟通障碍",
+    "alternative": [],
+    "notes": "礼貌询问"
+  },
+  {
+    "id": "SENT_0005",
+    "category": "情感",
+    "subcategory": "表达喜爱",
+    "french": "J'aime beaucoup la cuisine française.",
+    "ipa": "/ʒɛm bo.ku la kɥi.zin fʁɑ̃.sɛz/",
+    "chinese": "我很喜欢法国菜。",
+    "audio": "TTS",
+    "audio_mp3": null,
+    "level": "A1",
+    "situation": "表达个人喜好",
+    "alternative": [],
+    "notes": ""
+  }
+]
