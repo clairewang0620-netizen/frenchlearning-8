@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { BookOpen, Mic, GraduationCap, User, Menu, X } from 'lucide-react';
 import { ViewState, Word, Sentence } from './types';
 import WordList from './components/learning/WordList';
-import QuizView from './components/practice/Quiz'; // Assuming you have this or will generate it
+import QuizView from './components/practice/Quiz'; 
 import WrongQuestions from './components/review/WrongQuestions';
 
-// Lazy load data
-import a1Data from './data/words/A1_words.json';
-import sentenceData from './data/sentences/sentences_all.json';
+// Lazy load data - switched to new Part 1 files
+import a1Part1 from './data/words/A1_part1.json';
+import sentencesPart1 from './data/sentences/sentences_part1.json';
 
 // --- Navigation Component ---
 const Navigation = ({ currentView, setView, isMobileMenuOpen, setIsMobileMenuOpen }: any) => {
@@ -68,16 +68,21 @@ const Navigation = ({ currentView, setView, isMobileMenuOpen, setIsMobileMenuOpe
   );
 };
 
-// --- Sentence View Component (Inline for now) ---
+// --- Sentence View Component ---
 const SentenceView = ({ sentences }: { sentences: Sentence[] }) => {
     return (
         <div className="space-y-6">
             <h2 className="text-2xl font-bold text-slate-800">口语短句</h2>
             <div className="grid gap-4">
                 {sentences.map(sent => (
-                    <div key={sent.id} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-                        <p className="text-xl font-bold text-slate-800">{sent.french}</p>
-                        <p className="text-slate-500">{sent.chinese}</p>
+                    <div key={sent.id} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all">
+                        <div className="flex justify-between items-start mb-2">
+                           <span className="text-xs font-bold text-primary bg-blue-50 px-2 py-0.5 rounded">{sent.category}</span>
+                           <span className="text-xs text-slate-400">{sent.situation}</span>
+                        </div>
+                        <p className="text-xl font-bold text-slate-800 mb-1">{sent.french}</p>
+                        <p className="text-sm font-mono text-slate-400 mb-2">{sent.ipa}</p>
+                        <p className="text-slate-600">{sent.chinese}</p>
                     </div>
                 ))}
             </div>
@@ -89,10 +94,13 @@ const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('words');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [words, setWords] = useState<Word[]>([]);
+  const [sentences, setSentences] = useState<Sentence[]>([]);
   
   useEffect(() => {
-    // In a real scenario, we might merge multiple JSONs here
-    setWords(a1Data as Word[]);
+    // Load the Part 1 data
+    // In a real production app with 3500 words, you would fetch these from an API or load chunks dynamically
+    setWords(a1Part1 as Word[]);
+    setSentences(sentencesPart1 as Sentence[]);
   }, []);
 
   return (
@@ -117,7 +125,7 @@ const App: React.FC = () => {
         <div className="flex-1 overflow-y-auto p-4 md:p-8 md:pt-8 pt-4 scrollbar-hide">
           <div className="max-w-6xl mx-auto h-full">
             {currentView === 'words' && <WordList words={words} />}
-            {currentView === 'sentences' && <SentenceView sentences={sentenceData as Sentence[]} />}
+            {currentView === 'sentences' && <SentenceView sentences={sentences} />}
             {currentView === 'quiz' && <QuizView />}
             {currentView === 'profile' && <WrongQuestions />}
           </div>
