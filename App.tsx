@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Quiz from "./components/Quiz";
 
-// 示例单词数据
 const words = [
   { id: 1, word: "bonjour", meaning: "你好", pronunciation: "/bɔ̃.ʒuʁ/" },
   { id: 2, word: "merci", meaning: "谢谢", pronunciation: "/mɛʁ.si/" },
@@ -10,7 +9,6 @@ const words = [
   { id: 5, word: "maison", meaning: "房子", pronunciation: "/mɛ.zɔ̃/" },
 ];
 
-// 示例句子数据
 const sentences = [
   { id: 1, text: "Bonjour, comment ça va ?", translation: "你好，你怎么样？" },
   { id: 2, text: "Merci beaucoup.", translation: "非常感谢。" },
@@ -21,48 +19,37 @@ const App: React.FC = () => {
   const [selectedWord, setSelectedWord] = useState(words[0]);
 
   return (
-    <div style={{ maxWidth: "900px", margin: "0 auto", padding: "20px", fontFamily: "Arial, sans-serif", color: "#333" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>French Learning App</h1>
+    <div style={{ fontFamily: "Arial, sans-serif", maxWidth: "900px", margin: "0 auto", padding: "20px" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "40px" }}>French Learning App</h1>
 
       {/* 单词列表 */}
-      <section>
+      <section style={{ marginBottom: "40px", padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
         <h2>Word List</h2>
-        <ul style={{ display: "flex", flexWrap: "wrap", gap: "10px", padding: 0, listStyle: "none" }}>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
           {words.map((w) => (
-            <li
+            <div
               key={w.id}
               style={{
-                cursor: "pointer",
                 padding: "10px 15px",
-                border: selectedWord.id === w.id ? "2px solid #007BFF" : "1px solid #ccc",
-                borderRadius: "8px",
-                transition: "0.2s",
-                backgroundColor: "#fff",
+                border: selectedWord.id === w.id ? "2px solid #007bff" : "1px solid #ccc",
+                borderRadius: "6px",
+                cursor: "pointer",
+                background: selectedWord.id === w.id ? "#e7f1ff" : "#fff",
               }}
               onClick={() => setSelectedWord(w)}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#f0f0f0")}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#fff")}
             >
               {w.word}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
 
-        <div
-          style={{
-            marginTop: "15px",
-            padding: "15px",
-            border: "1px solid #aaa",
-            borderRadius: "8px",
-            backgroundColor: "#fafafa",
-          }}
-        >
+        <div style={{ marginTop: "20px", padding: "10px", background: "#f9f9f9", borderRadius: "6px" }}>
           <strong>Selected Word:</strong> {selectedWord.word} <br />
           <strong>Meaning:</strong> {selectedWord.meaning} <br />
           <strong>Pronunciation:</strong> {selectedWord.pronunciation} <br />
-          <audio controls style={{ width: "100%", marginTop: "10px" }}>
+          <audio controls style={{ marginTop: "10px" }}>
             <source
-              src={`https://ssl.gstatic.com/dictionary/static/sounds/oxford/${selectedWord.word}--_gb_1.mp3`}
+              src={`https://translate.google.com/translate_tts?ie=UTF-8&q=${selectedWord.word}&tl=fr&client=tw-ob`}
               type="audio/mpeg"
             />
             Your browser does not support the audio element.
@@ -71,37 +58,28 @@ const App: React.FC = () => {
       </section>
 
       {/* 句子列表 */}
-      <section style={{ marginTop: "30px" }}>
+      <section style={{ marginBottom: "40px", padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
         <h2>Example Sentences</h2>
         <ul style={{ listStyle: "none", padding: 0 }}>
           {sentences.map((s) => (
             <li
               key={s.id}
               style={{
-                marginBottom: "10px",
+                marginBottom: "15px",
                 padding: "10px",
+                background: "#f0f0f0",
                 borderRadius: "6px",
-                backgroundColor: "#fefefe",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
               }}
             >
-              <strong>{s.text}</strong> <br />
-              <em>{s.translation}</em>
+              <strong>{s.text}</strong>
+              <div style={{ color: "#555" }}>{s.translation}</div>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* Quiz 占位 */}
-      <section
-        style={{
-          marginTop: "30px",
-          padding: "15px",
-          border: "1px solid #ccc",
-          borderRadius: "8px",
-          backgroundColor: "#f9f9f9",
-        }}
-      >
+      {/* Quiz */}
+      <section style={{ padding: "20px", border: "1px solid #ccc", borderRadius: "8px" }}>
         <h2>Quiz Section</h2>
         <Quiz />
       </section>
