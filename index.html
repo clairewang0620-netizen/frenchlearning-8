@@ -5,43 +5,29 @@
     <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="Lumière French - 从A1到C1的法语学习助手" />
-    <title>Lumière French - 法语学习助手</title>
+    <title>Lumière French</title>
     
-    <!-- Tailwind CSS CDN for instant preview without build step -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              primary: '#3b82f6', // blue-500
-              secondary: '#64748b', // slate-500
-              accent: '#ef4444', // red-500
-            }
-          }
-        }
-      }
-    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
-    <!-- Inline styles for scrollbar and base settings -->
     <style>
-      ::-webkit-scrollbar {
-        width: 6px;
-        height: 6px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 3px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
       body {
+        font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        background-color: #f9fafb;
+      }
+      .font-serif {
+        font-family: 'Noto Serif', serif;
+      }
+      /* Hide Scrollbar but keep functionality */
+      .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+      }
+      .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
       }
     </style>
   <script type="importmap">
@@ -58,7 +44,7 @@
 }
 </script>
 </head>
-  <body class="bg-slate-50 text-slate-900">
+  <body class="bg-gray-50 text-slate-900">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
